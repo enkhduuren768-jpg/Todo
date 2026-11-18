@@ -1,12 +1,29 @@
-import { CornerDownLeft } from "lucide-react";
+import { Task } from "@/types";
+import { Trash2 , Check } from "lucide-react";
 
-export const TaskItem = () => {
+
+type TaskItemProps = {
+  task: Task;
+  onDelete:(id: string)=> void;
+};
+
+export const TaskItem = ({ task, onDelete ,  }: TaskItemProps) => {
+const handDelete = () => {
+  onDelete(task.id)
+};
+
   return (
-    <p className="mx-6 mb-7 mt-3 flex items-center justify-end gap-1.5 text-[11px] text-[#7a8881] sm:mx-8">
-      <div className="size-11px">
-        <CornerDownLeft />
-      </div>
-      <div className=" font-regular ">Enter to add a task</div>
-    </p>
+    <div className=" group flex items-center gap-4 px-4">
+      <button className="flex size-5.5 items-center justify-center rounded-full border transition border-[#bdcdc2] bg-white group-hover:border-[#63947b] ">
+      <Check  className="text-[red] w-14 h-14  "/>
+
+      </button>
+
+      <p className="min-w-0 flex-1 py-3 text-sm  text-[#30483c]">{task.title}</p>
+
+      <button onClick={handDelete} className=" flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-[#93a198] transition hover:bg-[#fbece7] hover:text-[#bb6250] ">
+        <Trash2 />
+      </button>
+    </div>
   );
 };
