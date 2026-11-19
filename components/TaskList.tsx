@@ -1,16 +1,22 @@
 import { TaskItem } from "./TaskItem";
 import { Task } from "@/types";
+import {TaskEmptyState} from "./TaskEmptyState"
 
 type TaskListProps = {
   tasks: Task[];
-  onDelete:(id: string)=> void;
+  hasTasks: boolean
+  onDelete: (id: string) => void;
+  onToggle: (id: string) => void;
 };
 
-export const TaskList = ({ tasks, onDelete }: TaskListProps) => {
+export const TaskList = ({ tasks, onDelete, onToggle , hasTasks }: TaskListProps) => {
+  if ( ! tasks.length) return <TaskEmptyState hasTasks={hasTasks} />;
+
+
   return (
-    <ul className="divide-y divide-[#edf1ee] px-3 py-2 sm:px-5">
+    <ul className="divide-y divide-[#edf1ee]  py-2 ">
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onDelete={onDelete}/>
+        <TaskItem key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />
       ))}
     </ul>
   );

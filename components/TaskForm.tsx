@@ -20,7 +20,7 @@ export const TaskForm = ({ onCreateTask }: TaskFormProps) => {
 
   return (
     <div>
-      <form onSubmit={handleSumbit} className="flex mx-6 items-center gap-2 rounded-2xl  sm:mx-8 border border-[#dce9e2] bg-[#f4f8f5] p-2">
+      <form onSubmit={handleSumbit} className="flex items-center gap-2 rounded-2xl   border border-[#dce9e2] bg-[#f4f8f5] p-2">
         <label htmlFor="new-task" className="sr-only">
           Task name
         </label>
@@ -43,7 +43,7 @@ export const TaskForm = ({ onCreateTask }: TaskFormProps) => {
           Add <span className="hidden sm:inline">task</span>
         </button>
       </form>
-      <div className="mx-6 mb-7 mt-3 flex items-center justify-end gap-1.5 text-[11px] text-[#7a8881] sm:mx-8">
+      <div className=" mb-7 mt-3 flex items-center justify-end gap-1.5 text-[11px] text-[#7a8881] ">
         <div>
           <CornerDownLeft size={11} />
         </div>
